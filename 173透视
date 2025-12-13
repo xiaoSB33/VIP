@@ -54,4 +54,4 @@ end
     使用示例：
     ESP(输入模型名称, "输入名称", Color3.new(0, 1, 0))
 ]]
-ESP(workspace.SCPs["SCP-173"].HumanoidRootPart, "173", Color3.new(0, 1, 0))
+ESP(workspace.SCPs["SCP-173"].HumanoidRootPart, "SCP（173）", Color3.new(0, 1, 0))
