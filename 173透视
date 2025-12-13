@@ -1,0 +1,57 @@
+local function ESP(model, Name, color)
+    if not model or (not model:IsA("Model") and not model:IsA("BasePart")) then 
+        return 
+    end
+    
+    local head
+    if model:IsA("BasePart") then
+        head = model
+    else
+        head = model:FindFirstChild("Head") 
+            or model:FindFirstChild("HumanoidRootPart") 
+            or model:FindFirstChildWhichIsA("BasePart")
+    end
+    
+    if not head then return end
+    
+    local billboardName = "ModelESP"
+    local existingBillboard = head:FindFirstChild(billboardName)
+    local billboard = existingBillboard or Instance.new("BillboardGui")
+    local textLabel = billboard:FindFirstChild("TextLabel") or Instance.new("TextLabel")
+
+    billboard.Name = billboardName
+    billboard.Adornee = head
+    billboard.Size = UDim2.new(0, 100, 0, 50)
+    billboard.StudsOffset = Vector3.new(0, 3, 0)
+    billboard.AlwaysOnTop = true
+
+    textLabel.Name = "TextLabel"
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.TextStrokeTransparency = 0
+    textLabel.TextSize = _G.ESPTextSize or 14
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.Text = (model.Name or "Part").."\n["..Name.."]"
+    textLabel.TextColor3 = color or Color3.new(1, 0, 0)
+    textLabel.Parent = billboard
+
+    if not existingBillboard then
+        billboard.Parent = head
+    end
+
+    if model:IsA("Model") then
+        for _, part in pairs(model:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.LocalTransparencyModifier = 0
+            end
+        end
+    elseif model:IsA("BasePart") then
+        model.LocalTransparencyModifier = 0
+    end
+end
+
+--[[
+    使用示例：
+    ESP(输入模型名称, "输入名称", Color3.new(0, 1, 0))
+]]
+ESP(workspace.SCPs["SCP-173"].HumanoidRootPart, "173", Color3.new(0, 1, 0))
