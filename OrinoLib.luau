@@ -10334,224 +10334,6 @@ function SetupEntityNotification(entityName, enabled)
 end
 end
 
--- 添加状态监控功能
-local function UpdateStatus()
-    if Character and Character:FindFirstChildOfClass("Humanoid") then
-        local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-        local statusText = string.format("速度: %d | 跳跃: %d | 重力: %.1f", 
-            Humanoid.WalkSpeed, Humanoid.JumpPower, workspace.Gravity)
-        
-        -- 更新状态显示
-        StatusSection:SetDesc(statusText)
-    end
-end
-
--- 定期更新状态
-while true do
-    UpdateStatus()
-    wait(2)
-end
-    
-local GameTab = Window:Tab({
-    Title = "游戏",
-    Icon = "gamepad-2",
-    Locked = false,
-})
-
-GameTab:Section({Title = "选择加载服务器", Icon = "settings", IconSize = 30, Opened = true})
-
-local function checkID(id)
-    return game.PlaceId == id
-end
-
-GameTab:Button({
-    Title = "点击加载逃走海啸获得脑力服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(131623223084840) then
-            mgdcj()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是逃走海啸获得脑力",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载SCP角色扮演服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(5041144419) then
-            loadSCPFunctions()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是SCP角色扮演服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载把火车开到终点服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(18133095266) then
-            huoce()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是把火车开到终点服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载河北唐县服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(4618049391) then
-            hiii()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是河北唐县服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载chain服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(10204250851) then
-            toji()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是chain服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-
-GameTab:Button({
-    Title = "点击加载通缉服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(14438406081) then
-            tojis()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是通缉服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载监狱人生服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(155615604) then
-            jian()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是监狱人生服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载被遗弃服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(18687417158) then
-            bei()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是被遗弃服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载力量传奇服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(3623096087) then
-            lilian()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是力量传奇服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载战争大亨服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(4639625707) then
-            zan()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是战争大亨服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
-GameTab:Button({
-    Title = "点击加载doors服务器",
-    Value = false,
-    Callback = function(value)
-        if checkID(2440500124) then
-            door()
-        else
-            WindUI:Notify({
-                Title = "错误",
-                Content = "当前游戏不是doors服务器",
-                Duration = 5,
-                Icon = "x"
-            })
-        end
-    end
-})
-
 local Scripts = window:Tab({
     Title = "脚本大全",
     Icon = "server",
@@ -10770,6 +10552,206 @@ while true do
     UpdateStatus()
     wait(2)
 end
+    
+local GameTab = Window:Tab({
+    Title = "游戏",
+    Icon = "gamepad-2",
+    Locked = false,
+})
+
+GameTab:Section({Title = "选择加载服务器", Icon = "settings", IconSize = 30, Opened = true})
+
+local function checkID(id)
+    return game.PlaceId == id
+end
+
+GameTab:Button({
+    Title = "点击加载逃走海啸获得脑力服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(131623223084840) then
+            mgdcj()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是逃走海啸获得脑力",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载SCP角色扮演服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(5041144419) then
+            loadSCPFunctions()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是SCP角色扮演服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载把火车开到终点服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(18133095266) then
+            huoce()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是把火车开到终点服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载河北唐县服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(4618049391) then
+            hiii()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是河北唐县服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载chain服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(10204250851) then
+            toji()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是chain服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+
+GameTab:Button({
+    Title = "点击加载通缉服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(14438406081) then
+            tojis()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是通缉服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载监狱人生服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(155615604) then
+            jian()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是监狱人生服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载被遗弃服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(18687417158) then
+            bei()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是被遗弃服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载力量传奇服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(3623096087) then
+            lilian()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是力量传奇服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载战争大亨服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(4639625707) then
+            zan()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是战争大亨服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
+
+GameTab:Button({
+    Title = "点击加载doors服务器",
+    Value = false,
+    Callback = function(value)
+        if checkID(2440500124) then
+            door()
+        else
+            WindUI:Notify({
+                Title = "错误",
+                Content = "当前游戏不是doors服务器",
+                Duration = 5,
+                Icon = "x"
+            })
+        end
+    end
+})
 
 print("持续更新，谢谢 ")
 print("想要什么功能来找我我的群聊1077645648我是免费汉化，谢谢🌹🌹")
